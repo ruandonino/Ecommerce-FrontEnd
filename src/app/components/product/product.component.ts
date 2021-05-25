@@ -130,7 +130,6 @@ export class ProductComponent implements OnInit, AfterViewInit {
 
   isLoaded(alerts){
     if(alerts.length > 0) {
-        console.log(alerts + '  true');
         return true;
     }
   }
