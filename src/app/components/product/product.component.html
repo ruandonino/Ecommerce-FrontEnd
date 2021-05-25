@@ -8,8 +8,8 @@
         <ul class="breadcrumb-tree">
           <li><a href="#">Home</a></li>
           <li><a href="#">All Categories</a></li>
-          <li><a href="#">{{product.category}}</a></li>
-          <li class="active">{{product.name}}</li>
+          <li><a href="#">{{product.title[0]}}</a></li>
+          <li class="active">{{product.title[1]}}</li>
         </ul>
       </div>
     </div>
@@ -20,22 +20,22 @@
 <!-- /BREADCRUMB -->
 
 <!-- SECTION -->
-<div class="section">
+<div class="section" *ngIf="product">
   <!-- container -->
   <div class="container">
     <!-- row -->
-    <div class="row">
+    <div class="row" >
       <!-- Product main img -->
-      <div class="col-md-5 col-md-push-2">
+      <div class="col-md-5 col-md-push-2" >
         <div id="product-main-img">
-          <ng-template [ngIf]="thumbImages.length === 0">
+          <ng-template [ngIf]="isLoadedZero(thumbImages)">
             <div class="product-preview">
-              <img [src]="product.image" alt="{{product.name}}">
+              <img [src]="product.image" alt="{{product.title[1]}}">
             </div>
           </ng-template>
-          <ng-template [ngIf]="thumbImages.length > 0">
+          <ng-template [ngIf]="isLoaded(thumbImages)" >
             <div class="product-preview" *ngFor="let t of thumbImages">
-              <img [src]="t" alt="{{product.name}}">
+              <img [src]="t" alt="{{product.title[1]}}">
             </div>
           </ng-template>
         </div>
@@ -44,17 +44,17 @@
 
       <!-- Product thumb imgs -->
       <div class="col-md-2  col-md-pull-5">
-        <ng-template [ngIf]="thumbImages.length > 0">
+        <ng-template [ngIf]="isLoaded(thumbImages)">
           <div id="product-imgs">
             <div class="product-preview" *ngFor="let t of thumbImages">
-              <img [src]="t" alt="{{product.name}}">
+              <img [src]="t" alt="{{product.title[1]}}">
             </div>
           </div>
         </ng-template>
-        <ng-template [ngIf]="thumbImages.length === 0">
+        <ng-template [ngIf]="isLoadedZero(thumbImages)">
           <div id="product-imgs">
             <div class="product-preview">
-              <img [src]="product.image" alt="{{product.name}}">
+              <img [src]="product.image" alt="{{product.title[1]}}">
             </div>
           </div>
         </ng-template>
@@ -65,7 +65,7 @@
       <!-- Product details -->
       <div class="col-md-5">
         <div class="product-details">
-          <h2 class="product-name">{{product.name}}</h2>
+          <h2 class="product-name">{{product.title[1]}}</h2>
           <div>
             <div class="product-rating">
               <i class="fa fa-star"></i>

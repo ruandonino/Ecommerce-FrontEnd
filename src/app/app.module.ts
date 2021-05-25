@@ -20,6 +20,8 @@ import {ProfileComponent} from '@app/components/profile/profile.component';
 import {AuthServiceConfig, GoogleLoginProvider, SocialLoginModule} from 'angularx-social-login';
 import {RegisterComponent} from '@app/components/register/register.component';
 import {HomeLayoutComponent} from '@app/components/home-layout/home-layout.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+
 
 
 const config = new AuthServiceConfig([
@@ -59,7 +61,8 @@ export function provideConfig() {
     ToastrModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    SocialLoginModule
+    SocialLoginModule,
+    NgxPayPalModule
   ],
   providers: [
     {

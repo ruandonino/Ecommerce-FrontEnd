@@ -143,11 +143,10 @@
             I've read and accept the <a href="#">terms & conditions</a>
           </label>
         </div>
-        <button class="btn btn-outline-danger btn-sm my-2 btn-block order-submit"
-                (click)="onCheckout()"
-                [disabled]="cartTotal <= 0"
-                [class.disabled]="cartTotal<=0"
-        >Place order</button>
+        <div [hidden]="paidFor" #paypal
+            (click)="onCheckout()"
+            [class.disabled]="cartTotal<=0">
+        </div>
       </div>
       <!-- /Order Details -->
     </div>

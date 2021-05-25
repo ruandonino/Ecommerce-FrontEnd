@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ProductService} from '../../services/product.service';
 import {CartService} from '../../services/cart.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ProductModelServer, ServerResponse} from '../../models/product.model';
 import {map} from 'rxjs/operators';
 
 declare let $: any;
@@ -13,8 +14,8 @@ declare let $: any;
 })
 export class ProductComponent implements OnInit, AfterViewInit {
   id: number;
-  product;
-  thumbImages: any[] = [];
+  product:any = {title:["",""], description:"",id:0,image:"",images:"",price:"",quantity:0};
+  thumbImages: any[];
 
   @ViewChild('quantity') quantityInput;
 
@@ -35,10 +36,14 @@ export class ProductComponent implements OnInit, AfterViewInit {
         this.id = prodId;
         this.productService.getSingleProduct(this.id).subscribe(prod => {
           this.product = prod;
+          //console.log(this.product);
 
           if (prod.images !== null) {
             this.thumbImages = prod.images.split(';');
+            //this.thumbImages = ["https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSr-iFW5W8n3_jxNKiclAP_k71Fi9PGcojsMUC-vb8zbwJthbBd","https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSr-iFW5W8n3_jxNKiclAP_k71Fi9PGcojsMUC-vb8zbwJthbBd","https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSr-iFW5W8n3_jxNKiclAP_k71Fi9PGcojsMUC-vb8zbwJthbBd","https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSr-iFW5W8n3_jxNKiclAP_k71Fi9PGcojsMUC-vb8zbwJthbBd"];
           }
+          else{this.thumbImages =[]}
+          console.log(this.thumbImages);
 
         });
       });
@@ -121,5 +126,22 @@ export class ProductComponent implements OnInit, AfterViewInit {
 
   addToCart(id: number) {
     this.cartService.AddProductToCart(id, this.quantityInput.nativeElement.value);
+  }
+
+  isLoaded(alerts){
+    if(alerts.length > 0) {
+        console.log(alerts + '  true');
+        return true;
+    }
+  }
+
+  isLoadedZero(alerts){
+    if(alerts == undefined) {
+         return false;
+    } else if(alerts.length == 0) {
+         console.log(alerts + '  0true');
+         return true;
+    }
+    else{return false;}
   }
 }

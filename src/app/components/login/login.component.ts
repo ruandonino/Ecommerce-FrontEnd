@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.authState$.subscribe(authState => {
+    this.userService.authState$.subscribe((authState:any) => {
       if (authState) {
         this.router.navigateByUrl(this.route.snapshot.queryParams.returnUrl || '/profile');
 
