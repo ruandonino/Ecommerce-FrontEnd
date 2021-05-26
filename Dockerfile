@@ -1,4 +1,4 @@
-FROM node:13.3.0 AS compile-image
+FROM node:14 AS compile-image
 WORKDIR /opt/ng COPY .npmrc package.json yarn.lock ./
 RUN npm install
 RUN npm install -g @angular/cli
