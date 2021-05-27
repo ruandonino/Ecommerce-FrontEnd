@@ -27,7 +27,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider('367809039121-url9rppaflvnbdsq9mh874h1kk9mqlqt.apps.googleusercontent.com')
+    provider: new GoogleLoginProvider('898420138508-ljocqjeec7lu9gq0jk36ggc7hb2qc7fa.apps.googleusercontent.com')
   }
 
 ]);
