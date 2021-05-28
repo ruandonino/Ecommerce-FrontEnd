@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  SERVER_URL : 'https://shopdex-edml6m2f3a-rj.a.run.app/api',
-  SERVER_URL_NEW : 'https://shopdex-edml6m2f3a-rj.a.run.app/api',
+  SERVER_URL : 'https://shopdex-edml6m2f3a-uc.a.run.app/api',
+  SERVER_URL_NEW : 'https://shopdex-edml6m2f3a-uc.a.run.app/api',
 };
 
 /*
